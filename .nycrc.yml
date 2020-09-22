@@ -1,0 +1,14 @@
+reporter:
+  - text
+  - text-summary
+  - html
+  - lcov
+extension:
+  - .ts
+require:
+  - ts-node/register
+  - source-map-support/register
+exclude:
+  - '*.spec.ts'
+sourceMap: true
+instrument: true

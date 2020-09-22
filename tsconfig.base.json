@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "allowSyntheticDefaultImports": true,
+    "declaration": false,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "moduleResolution": "node",
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": true,
+    "strictNullChecks": true,
+    "jsxFactory": "h",
+    "newLine": "lf",
+    "target": "es2020",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "strictBindCallApply": true,
+    "resolveJsonModule": true,
+    "assumeChangesOnlyAffectDirectDependencies": true,
+    "stripInternal": true,
+    "importHelpers": true
+  },
+  "include": [
+    "src/**/*.spec.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
