@@ -3,6 +3,8 @@ ignorePatterns:
   - /dist
   - /coverage
   - '**/*.d.ts'
+  - /tmp.ts
+  - /tmp.js
 extends:
   - '@alorel/eslint-config-base'
   - '@alorel/eslint-config-typescript'

@@ -1,5 +1,5 @@
-import {_tmp} from './inner-import';
+import './moduledef';
 
-console.log(_tmp());
-
-export const foo = 1;
+export * from './types/InputOnlyPlugin';
+export * from './types/PluginOpts';
+export * from './lib/runtime';

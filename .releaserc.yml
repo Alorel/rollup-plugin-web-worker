@@ -8,6 +8,8 @@ verifyConditions:
 prepare:
   - '@semantic-release/changelog'
   - *npm
+  - path: &exec '@semantic-release/exec'
+    cmd: yarn run doctoc
   - path: '@semantic-release/git'
     message: 'chore(release): ${nextRelease.version}'
     assets:
@@ -15,7 +17,7 @@ prepare:
       - README.md
       - package.json
       - yarn.lock
-  - path: &exec '@semantic-release/exec'
+  - path: *exec
     cmd: yarn run rollup
 
 publish:

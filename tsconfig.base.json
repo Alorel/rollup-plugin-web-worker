@@ -3,6 +3,8 @@
     "rootDir": ".",
     "allowSyntheticDefaultImports": true,
     "declaration": false,
+    "module": "commonjs",
+    "sourceMap": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "moduleResolution": "node",
@@ -22,9 +24,6 @@
     "stripInternal": true,
     "importHelpers": true
   },
-  "include": [
-    "src/**/*.spec.ts"
-  ],
   "exclude": [
     "node_modules"
   ]

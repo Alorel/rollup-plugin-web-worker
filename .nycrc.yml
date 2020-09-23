@@ -9,6 +9,8 @@ require:
   - ts-node/register
   - source-map-support/register
 exclude:
-  - '*.spec.ts'
+  - '**/*.spec.ts'
+  - build/**/*
+  - test/**/*
 sourceMap: true
 instrument: true
