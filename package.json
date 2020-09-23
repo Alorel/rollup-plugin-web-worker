@@ -1,6 +1,6 @@
 {
   "name": "@alorel/rollup-plugin-web-worker",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Bundles web workers as chunks",
   "main": "index.js",
   "module": "index.es.js",
