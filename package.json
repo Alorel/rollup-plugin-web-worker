@@ -2,7 +2,7 @@
   "name": "@alorel/rollup-plugin-web-worker",
   "version": "1.0.0",
   "description": "Bundles web workers as chunks",
-  "main": "index.js",
+  "main": "index.cjs.js",
   "module": "index.es.js",
   "repository": "https://github.com/Alorel/rollup-plugin-web-worker.git",
   "types": "index.d.ts",
