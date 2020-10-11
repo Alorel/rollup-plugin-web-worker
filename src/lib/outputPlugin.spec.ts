@@ -63,9 +63,7 @@ describe('createOutputPlugin', () => {
           modules: {foo: null},
           name: 'ci:testchunk'
         };
-        const run = () => {
-          p.renderChunk!.call(ctx, '', chunk, {} as any);
-        };
+        const run = () => p.renderChunk!.call(ctx, '', chunk, {} as any);
 
         return expect(run).to
           .throw('Chunk ci:testchunk has a web worker url module in its dependency tree, but an associated import can\'t be found.');

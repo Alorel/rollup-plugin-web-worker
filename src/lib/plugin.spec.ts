@@ -22,10 +22,10 @@ describe('createPlugin', () => {
   it('Should throw if input is a web worker url', () => {
     const plugin = new RollupWebWorkerPlugin().createPlugin();
     const call = () => {
-      plugin.resolveId!.call(createErrorThrowingCtx(), 'web-worker-url:./foo.js', undefined);
+      return plugin.resolveId!.call(createErrorThrowingCtx(), 'web-worker-url:./foo.js', undefined, {} as any);
     };
 
-    expect(call).to.throw('web-worker-url cannot point to a build entrypoint');
+    return expect(call()).to.eventually.rejectedWith('web-worker-url cannot point to a build entrypoint');
   });
 
   it('Should create web worker url module', async () => {
