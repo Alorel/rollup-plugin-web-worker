@@ -36,7 +36,7 @@ A somewhat opinionated Rollup plugin for emitting web workers as chunks.
 Instead of directly specifying the web worker's URL, you can import it through the plugin:
 
 ```javascript
-import webWorkerUrl from 'web-worker-url:./path-including-extension.js';
+import webWorkerUrl from 'web-worker-url:./path-to-web-worker-entrypoint';
 ```
 
 # Installation
@@ -52,8 +52,6 @@ Then install it:
 ```bash
 npm install @alorel/rollup-plugin-web-worker
 ```
-
-This will create a chunk for `./path-including-extension.js`. 
 
 # Caveats and gotchas
 
@@ -88,10 +86,12 @@ System.import('/path-to-worker.js');
 ```javascript
 // some-bundled-file.js
 
-import webWorkerUrl from 'web-worker-url:./path-to-file-including-extension.js';
+import webWorkerUrl from 'web-worker-url:./path-to-web-worker-entrypoint';
 
 const worker = new Worker(webWorkerUrl);
 ```
+
+This will create a chunk for `./path-to-web-worker-entrypoint`. 
 
 ```javascript
 // rollup.config.js

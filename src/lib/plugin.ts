@@ -1,12 +1,13 @@
 import {promises as fs} from 'fs';
-import {dirname, isAbsolute, resolve} from 'path';
+import {isAbsolute} from 'path';
+import {PluginContext} from 'rollup';
+import type {InputOnlyPlugin} from '../types/InputOnlyPlugin';
+import {Strings} from '../types/Strings';
 import {ChunkNameResolver} from './ChunkNameResolver';
 import {createRefPair} from './createRefPair';
 import {ImportFormatter} from './ImportFormatter';
-import {ABSOLUTE_PATHS, PLUGIN_OPTS} from './symbols';
 import type {RollupWebWorkerPlugin} from './runtime';
-import type {InputOnlyPlugin} from '../types/InputOnlyPlugin';
-import {Strings} from '../types/Strings';
+import {ABSOLUTE_PATHS, PLUGIN_OPTS} from './symbols';
 
 /** @internal */
 export function createErrorPlugin(error: Error): InputOnlyPlugin {
@@ -35,7 +36,7 @@ export function createPlugin(runtime: RollupWebWorkerPlugin): InputOnlyPlugin {
       return realPath ? fs.readFile(realPath, 'utf8') : null;
     },
     name: Strings.PLUGIN_NAME,
-    resolveId(id, importee) {
+    async resolveId(this: PluginContext, id, importee) {
       const relativePath = ImportFormatter.match(id);
 
       if (!relativePath) {
@@ -46,7 +47,10 @@ export function createPlugin(runtime: RollupWebWorkerPlugin): InputOnlyPlugin {
         this.error('web-worker-url cannot point to a build entrypoint');
       }
 
-      const absolute = resolve(dirname(importee), relativePath);
+      const absolute = (await this.resolve(relativePath, importee))?.id;
+      if (!absolute) {
+        this.error(`Cannot resolve ${relativePath} from ${importee}`);
+      }
       this.addWatchFile(absolute);
 
       const formatted = ImportFormatter.toWebWorkerUrl(absolute);
