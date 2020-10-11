@@ -1,10 +1,21 @@
 root: true
 ignorePatterns:
+  - /build
   - /dist
   - /coverage
   - '**/*.d.ts'
   - /tmp.ts
   - /tmp.js
+parserOptions:
+  project: tsconfig.test.json
+overrides:
+  - files:
+      - test/**/*.{js,ts}
+      - src/**/*.spec.ts
+    rules:
+      '@typescript-eslint/no-magic-numbers': off
+rules:
+  arrow-body-style: off
 extends:
   - '@alorel/eslint-config-base'
   - '@alorel/eslint-config-typescript'

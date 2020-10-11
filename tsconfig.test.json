@@ -4,6 +4,8 @@
     "target": "es2018"
   },
   "include": [
-    "src"
+    "src",
+    "test",
+    "rollup.config.js"
   ]
 }
